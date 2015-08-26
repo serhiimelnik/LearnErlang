@@ -1,18 +1,18 @@
 -module(chapter03).
--export([
-  greet/2,
-  first/1,
-  second/1,
-  same/2,
-  bmi_tell/1,
-  lucky_number/1,
-  lucky_atom/1,
-  safe_division/2,
-  if_bmi_tell/1,
-  assessment_of_temp/1
-]).
-
 -author("Serhii Melnyk").
+
+-export([
+greet/2,
+first/1,
+second/1,
+same/2,
+bmi_tell/1,
+lucky_number/1,
+lucky_atom/1,
+safe_division/2,
+if_bmi_tell/1,
+assessment_of_temp/1
+]).
 
 greet(male, Name) ->
   io:format("Hello, Mr. ~s!", [Name]);

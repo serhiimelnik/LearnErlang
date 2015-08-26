@@ -1,3 +1,4 @@
 LearnErlang.iml
 .idea
 out
+erl_crash.dump
