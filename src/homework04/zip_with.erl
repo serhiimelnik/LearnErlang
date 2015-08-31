@@ -1,7 +1,7 @@
 -module(zip_with).
 -author("Serhii Melnyk").
 
--export([zip_with/3, zip_with2/3, zip_with3/3, ok/0]).
+-export([zip_with/3]).
 
 zip_with(F, L1, L2) -> lists:reverse(zip_with_rec(F, L1, L2, [])).
 
