@@ -1,5 +1,4 @@
 -module(guards).
--author("Serhii Melnyk").
 
 -export([old_enough/1, right_age/1, wrong_age/1]).
 

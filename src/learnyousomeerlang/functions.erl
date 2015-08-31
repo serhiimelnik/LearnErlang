@@ -1,5 +1,4 @@
 -module(functions).
--author("Serhii Melnyk").
 
 -export([head/1, second/1, valid_time/1]).
 

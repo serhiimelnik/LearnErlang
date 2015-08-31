@@ -1,7 +1,6 @@
 -module(tree).
--author("Serhii Melnyk").
 
--export([empty/0, insert/3, lookup/2]).
+-export([empty/0, insert/3, lookup/2, has_value/2, ok/0]).
 
 empty() -> {node, 'nil'}.
 
@@ -24,3 +23,19 @@ lookup(Key, {node, {NodeKey, _, Smaller, _}}) when Key < NodeKey ->
   lookup(Key, Smaller);
 lookup(Key, {node, {_, _, _, Larger}}) ->
   lookup(Key, Larger).
+
+has_value(Val, Tree) ->
+  try has_value1(Val, Tree) of
+    false -> false
+  catch
+    true  -> true
+  end.
+has_value1(_, {node, 'nil'}) ->
+  false;
+has_value1(Val, {node, {_, Val, _, _}}) ->
+  throw(true);
+has_value1(Val, {node, {_, _, Left, Right}}) ->
+  has_value1(Val, Left),
+  has_value1(Val, Right).
+
+ok() -> ok.

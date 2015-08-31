@@ -1,5 +1,4 @@
 -module(cases).
--author("Serhii Melnyk").
 
 -export([insert/2, beach/1]).
 

@@ -1,5 +1,4 @@
 -module(what_the_if).
--author("Serhii Melnyk").
 
 -export([heh_fine/0, oh_god/1, help_me/1]).
 

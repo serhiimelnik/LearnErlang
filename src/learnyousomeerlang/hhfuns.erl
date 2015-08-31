@@ -1,5 +1,4 @@
 -module(hhfuns).
--author("Serhii Melnyk").
 
 -compile(export_all).
 
