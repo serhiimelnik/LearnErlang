@@ -11,5 +11,3 @@ take(_,[],_,Acc) -> Acc;
 take(N,_,N,Acc)  -> Acc;
 take(N, [H|T], C, Acc) when is_function(T) -> take(N, T(), C+1, [H|Acc]);
 take(N, [H|T], C, Acc) -> take(N, T, C+1, [H|Acc]).
-
-ok() -> ok.

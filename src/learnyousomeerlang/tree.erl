@@ -37,5 +37,3 @@ has_value1(Val, {node, {_, Val, _, _}}) ->
 has_value1(Val, {node, {_, _, Left, Right}}) ->
   has_value1(Val, Left),
   has_value1(Val, Right).
-
-ok() -> ok.
