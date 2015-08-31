@@ -1,6 +1,6 @@
 -module(tree).
 
--export([empty/0, insert/3, lookup/2, has_value/2, ok/0]).
+-export([empty/0, insert/3, lookup/2, has_value/2]).
 
 empty() -> {node, 'nil'}.
 
