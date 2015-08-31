@@ -1,5 +1,5 @@
 -module(zip_with).
--author("Serhii Melnyk").
+-author("Serhii Melnyk, Viktor Kudlai").
 
 -export([zip_with/3]).
 
