@@ -1,0 +1,11 @@
+{application, counter, [
+  {description, "Homework 10 counter"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib
+  ]},
+  {mod, {counter_app, []}},
+  {env, []}
+]}.
