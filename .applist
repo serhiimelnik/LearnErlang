@@ -1,1 +1,1 @@
-[kernel,stdlib,fs,active,mad,sh]
+[kernel,stdlib,fs,ranch,crypto,yaws_json2,cowlib,cowboy,active,mad,sh,smoothie]
