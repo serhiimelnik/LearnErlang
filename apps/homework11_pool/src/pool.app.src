@@ -1,0 +1,11 @@
+{application, pool, [
+  {description, "Homework 11 pool"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib
+  ]},
+  {mod, {pool_app, []}},
+  {env, []}
+]}.
