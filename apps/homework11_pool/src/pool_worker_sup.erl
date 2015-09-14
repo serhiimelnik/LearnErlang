@@ -1,18 +1,18 @@
--module(pool_sup).
+-module(pool_worker_sup).
 -author("Serhii Melnyk").
 -bahaviour(supervisor).
 
 -export([start_link/0, init/1]).
 
-start_link(MFA = {_,_,_}) ->
-  supervisor:start_link(?MODULE, MFA).
+start_link() ->
+  supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-init({M,F,A}) ->
+init([]) ->
   SupFlags = #{strategy => simple_one_for_one, intensity => 1, period => 5},
   ChildSpecs = [#{id => pool_worker,
-    start => {pool_worker, start_link, {M,F,A}},
+    start => {pool_worker, start_link, []},
     restart => temporary,
     shutdown => brutal_kill,
     type => worker,
-    modules => [M]}],
+    modules => [pool_worker_sup]}],
   {ok, {SupFlags, ChildSpecs}}.
