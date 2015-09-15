@@ -15,7 +15,7 @@ start_child() ->
                  shutdown => brutal_kill, 
                  type => supervisor,       
                  modules => [pool_sup]}], 
-  supervisor:start_child(?MODULE, {start_child, ChildSpecs}).
+  supervisor:start_child(?MODULE, []).
 
 init([]) ->
   SupFlags = #{strategy => simple_one_for_one, intensity => 1, period => 5},
