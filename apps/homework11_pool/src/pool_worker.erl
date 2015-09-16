@@ -2,25 +2,22 @@
 -author("Serhii Melnyk").
 -behaviour(gen_server).
 
--export([test/1]).
+-export([test/3]).
 -export([start_link/0]).
 -export([init/1, handle_call/3, handle_cast/2, 
          handle_info/2, code_change/3, terminate/2]).
 
--record(state, {counter}).
-
-test(F) ->
-  gen_server:call(?MODULE, {F}).
+test(Mod, Fun, Args) ->
+  gen_server:call(?MODULE, {exec, Mod, Fun, Args}).
 
 start_link() ->
-  gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
+  gen_server:start_link(?MODULE, [], []).
 
-init([S]) ->
-  {ok, S}.
+init(_Args) ->
+  {ok, {}}.
 
-handle_call({F}, _From, S) ->
-  F,
-  {reply, S, S}.
+handle_call({exec, Mod, Fun, Args}, _From, State) ->
+  {reply, apply(Mod, Fun, Args), State}.
 
 handle_cast(_Msg, State) ->
   {noreply, State}.
