@@ -5,7 +5,7 @@
   handle_info/2, code_change/3, terminate/2]).
 
 start_link(Task, SendTo) ->
-  gen_server:start_link(?MODULE, {Task, 500, 1, SendTo} , []).
+  gen_server:start_link(?MODULE, {Task, 0, 1, SendTo} , []).
 
 stop(Pid) ->
   gen_server:call(Pid, stop).
