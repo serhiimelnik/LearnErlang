@@ -13,7 +13,7 @@ rpn("^", [N1,N2|S]) -> [math:pow(N2,N1)|S];
 rpn("ln", [N|S])    -> [math:log(N)|S];
 rpn("log10", [N|S]) -> [math:log10(N)|S];
 rpn("sum", S)     -> [lists:sum(S)];
-rpn("pow", S)     -> [lists:foldl(fun erlang:'*'/2, 1, S)];
+rpn("prod", S)     -> [lists:foldl(fun erlang:'*'/2, 1, S)];
 rpn(X, Stack)       -> [read(X)|Stack].
 
 read(N) ->

@@ -1,1 +1,1 @@
-[kernel,stdlib,ranch,crypto,yaws_json2,cowlib,cowboy,counter,pool,ppool,smoothie]
+[kernel,stdlib,fs,ranch,crypto,inets,yaws_json2,cowlib,cowboy,counter,pool,ppool,active,mad,sh,smoothie]
