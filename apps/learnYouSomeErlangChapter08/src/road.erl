@@ -1,11 +1,12 @@
 -module(road).
 -compile(export_all).
 
-main() ->
-  File = "apps/learnYouSomeErlangChapter08/src/road.txt",
-  {ok, Bin} = file:read_file(File),
+main([FileName]) ->
+%%  File = "apps/learnYouSomeErlangChapter08/src/road.txt",
+  {ok, Bin} = file:read_file(FileName),
   Map = parse_map(Bin),
-  io:format("~p~n", [optimal_path(Map)]).
+  io:format("~p~n", [optimal_path(Map)]),
+  erlang:halt(0).
 
 %% Transform a string into a readable map of triples
 parse_map(Bin) when is_binary(Bin) ->
