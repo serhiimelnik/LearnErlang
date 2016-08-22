@@ -31,41 +31,41 @@ int main(int argc, char **argv) {
 
   addr.s_addr = inet_addr("127.0.0.1");
   if (erl_connect_xinit("hostname", "cnode", "cnode@hostname",
-            &addr, "secretcookie", 0) == -1)
+                        &addr, "secretcookie", 0) == -1)
     erl_err_quit("erl_connect_xinit");
-
+  
   /* Make a listen socket */
   if ((listen = my_listen(port)) <= 0)
     erl_err_quit("my_listen");
-
+  
   if (erl_publish(port) == -1)
     erl_err_quit("erl_publish");
-
+  
   if ((fd = erl_accept(listen, &conn)) == ERL_ERROR)
     erl_err_quit("erl_accept");
   fprintf(stderr, "Connected to %s\n\r", conn.nodename);
-
+  
   while (loop) {
-
+    
     got = erl_receive_msg(fd, buf, BUFSIZE, &emsg);
     if (got == ERL_TICK) {
       /* ignore */
     } else if (got == ERL_ERROR) {
       loop = 0;
     } else {
-
+      
       if (emsg.type == ERL_REG_SEND) {
         fromp = erl_element(1, emsg.msg);
         tuplep = erl_element(2, emsg.msg);
         fnp = erl_element(1, tuplep);
         argp = erl_element(2, tuplep);
-
+        
         if (strncmp(ERL_ATOM_PTR(fnp), "foo", 3) == 0) {
           res = foo(ERL_INT_VALUE(argp));
         } else if (strncmp(ERL_ATOM_PTR(fnp), "bar", 3) == 0) {
           res = bar(ERL_INT_VALUE(argp));
         }
-
+        
         resp = erl_format("{cnode, ~i}", res);
         erl_send(fd, fromp, resp);
         

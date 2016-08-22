@@ -50,23 +50,23 @@ int main(int argc, char **argv) {
     } else if (got == ERL_ERROR) {
       loop = 0;
     } else {
-
+      
       if (emsg.type == ERL_REG_SEND) {
         fromp = erl_element(1, emsg.msg);
         tuplep = erl_element(2, emsg.msg);
         fnp = erl_element(1, tuplep);
         argp = erl_element(2, tuplep);
-
+        
         if (strncmp(ERL_ATOM_PTR(fnp), "foo", 3) == 0) {
           res = foo(ERL_INT_VALUE(argp));
         } else if (strncmp(ERL_ATOM_PTR(fnp), "bar", 3) == 0) {
           res = bar(ERL_INT_VALUE(argp));
         }
-
+        
         resp = erl_format("{cnode, ~i}", res);
-
+        
         erl_send(fd, fromp, resp);
-
+        
         erl_free_term(emsg.from);
         erl_free_term(emsg.msg);
         erl_free_term(fromp);
